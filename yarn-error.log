@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/Users/yeison/Documents/dev/React Navite/rn-jobs/node_modules/@expo/cli/node_modules/form-data/Readme.md'
+  Error: EACCES: permission denied, unlink '/Users/yeison/Documents/dev/React Navite/rn-jobs/node_modules/@babel/core/node_modules/ms/package.json'
 
 npm manifest: 
   {
