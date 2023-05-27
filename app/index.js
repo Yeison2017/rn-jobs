@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Stack, useRouter } from "expo-router";
 import { View, SafeAreaView, ScrollView } from "react-native";
 
@@ -9,6 +9,7 @@ import Popularjobs from "../components/home/popular/Popularjobs";
 import Nearbyjobs from "../components/home/nearby/Nearbyjobs";
 
 const Home = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
 
   return (
@@ -34,7 +35,16 @@ const Home = () => {
             padding: SIZES.medium,
           }}
         >
-          <Welcome />
+          <Welcome
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            handleClick={() => {
+              // console.log("first: ", searchTerm);
+              if (searchTerm) {
+                router.push(`/search/${searchTerm}`);
+              }
+            }}
+          />
 
           <Popularjobs />
           <Nearbyjobs />

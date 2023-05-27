@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Stack, useRouter, useSearchParams } from "expo-router";
 import {
   View,
@@ -32,7 +32,11 @@ const JobDetails = () => {
     job_id: params.id,
   });
 
-  const onRefetch = () => {};
+  const onRefetch = useCallback(() => {
+    setRefreshing(true);
+    refetch();
+    setRefreshing(false);
+  });
 
   const displayTabContent = () => {
     switch (activeTab) {
