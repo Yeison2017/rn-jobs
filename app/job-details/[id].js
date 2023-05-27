@@ -11,7 +11,13 @@ import {
 import useFetch from "../../hook/useFetch";
 import { COLORS, SIZES, icons } from "../../constants";
 import ScreenHeaderBtn from "../../components/common/header/ScreenHeaderBtn";
-import { Company, JobTabs, Specifics } from "../../components";
+import {
+  Company,
+  JobAbout,
+  JobFooter,
+  JobTabs,
+  Specifics,
+} from "../../components";
 
 const tabs = ["About", "Qualifications", "Responsabilites"];
 
@@ -38,8 +44,16 @@ const JobDetails = () => {
           />
         );
       case "About":
+        return (
+          <JobAbout info={data[0].job_description ?? "No data provider"} />
+        );
       case "Responsabilites":
-
+        return (
+          <Specifics
+            title="Responsabilites"
+            points={data[0].job_highlights?.Responsibilites ?? ["N/A"]}
+          />
+        );
       default:
         break;
     }
@@ -101,6 +115,13 @@ const JobDetails = () => {
             </View>
           )}
         </ScrollView>
+
+        <JobFooter
+          url={
+            data[0]?.job_google_link ??
+            "https://careers.ggogle.com/jobs/results"
+          }
+        />
       </>
     </SafeAreaView>
   );
